@@ -1,0 +1,17 @@
+---
+- name: Install Vim, Git, Docker and Docker Compose
+  hosts: all
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install Git, Vim, Docker, Docker-Compose
+      apt:
+        name: ['git', 'vim', 'docker', 'docker-compose']
+        state: latest
+        update_cache: yes
+      with_items:
+        - git
+        - vim
+        - docker
+        - docker-compose
